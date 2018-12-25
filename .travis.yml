@@ -16,7 +16,7 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to hub.docker.com
-  docker push earlpomeroy/multi-client
-  docker push earlpomeroy/multi-nginx
-  docker push earlpomeroy/multi-server
-  docker push earlpomeroy/multi-worker
+  - docker push earlpomeroy/multi-client
+  - docker push earlpomeroy/multi-nginx
+  - docker push earlpomeroy/multi-server
+  - docker push earlpomeroy/multi-worker
