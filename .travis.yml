@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t earlpomeroy/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run earlpomeroy/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t earlpomeroy/multi-client ./client
+  - docker build -t earlpomeroy/multi-nginx ./nginx
+  - docker build -t earlpomeroy/multi-server ./server
+  - docker build -t earlpomeroy/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Push images to hub.docker.com
+  docker push earlpomeroy/multi-client
+  docker push earlpomeroy/multi-nginx
+  docker push earlpomeroy/multi-server
+  docker push earlpomeroy/multi-worker
