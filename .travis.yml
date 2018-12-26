@@ -23,10 +23,10 @@ after_success:
   - docker push earlpomeroy/multi-worker
 deploy:
   provider: elasticbeanstalk
-  region: "us-west-2"
+  region: "us-west-1"
   app: "multi-docker"
   env: "MultiDocker-env"
-  bucket_name: "elasticbeanstalk-us-west-2-751098179150"
+  bucket_name: "elasticbeanstalk-us-west-1-751098179150"
   bucket_path: "multi-docker"
   on:
     branch: master
