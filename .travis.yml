@@ -21,15 +21,15 @@ after_success:
   - docker push earlpomeroy/multi-nginx
   - docker push earlpomeroy/multi-server
   - docker push earlpomeroy/multi-worker
-deploy:
-  provider: elasticbeanstalk
-  region: "us-west-2"
-  app: "multi-docker"
-  env: "MultiDocker-env"
-  bucket_name: "elasticbeanstalk-us-west-2-751098179150"
-  bucket_path: "multi-docker"
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-west-2"
+#   app: "multi-docker"
+#   env: "MultiDocker-env"
+#   bucket_name: "elasticbeanstalk-us-west-2-751098179150"
+#   bucket_path: "multi-docker"
+#   on:
+#     branch: master
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key:
+#     secure: "$AWS_SECRET_KEY"
